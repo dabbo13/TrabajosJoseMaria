@@ -116,49 +116,53 @@ public class FicheroAccesoAleatorio {
     public static void main(String[] args) {
 
         // Define la estructura de los campos para los registros.
-        List campos = new ArrayList();
-        campos.add(new Pair("DNI", 9));
-        campos.add(new Pair("NOMBRE", 32));
-        campos.add(new Pair("CP", 5));
+        List<Pair<String, Integer>> campos = new ArrayList<>();
+        campos.add(new Pair<>("DNI", 9));
+        campos.add(new Pair<>("NOMBRE", 32));
+        campos.add(new Pair<>("CP", 5));
 
         try {
-            // Instancia la clase para trabajar con el archivo "fic_acceso_aleat.dat".
-            FicheroAccesoAleatorio faa = new FicheroAccesoAleatorio("fic_acceso_ aleat.dat", campos);
+            FicheroAccesoAleatorio faa = new FicheroAccesoAleatorio("fic_acceso_aleat.dat", campos);
 
-            // Crea e inserta el primer registro (SAMPER).
-            Map reg = new HashMap();
+            Map<String, String> reg = new HashMap<>();
+
+            // --- Insertamos 3 registros normales ---
             reg.put("DNI", "56789012B");
             reg.put("NOMBRE", "SAMPER");
             reg.put("CP", "29730");
             faa.insertar(reg);
 
-            // Limpia el mapa y crea e inserta el segundo registro (ROJAS).
-            // Notar que el campo "CP" no se incluye, se usará el valor por defecto (vacío).
             reg.clear();
             reg.put("DNI", "89012345E");
             reg.put("NOMBRE", "ROJAS");
             faa.insertar(reg);
 
-            // Limpia el mapa y crea e inserta el tercer registro (DORCE).
             reg.clear();
             reg.put("DNI", "23456789D");
             reg.put("NOMBRE", "DORCE");
             reg.put("CP", "13700");
             faa.insertar(reg);
 
-            // Limpia el mapa y crea e inserta un registro en la posición 1, sobreescribiendo el registro de ROJAS.
+            System.out.println("Número de registros actuales: " + faa.getNumReg());
+
+            // --- Intentamos insertar un registro en posición 10 (más allá del final) ---
             reg.clear();
-            reg.put("DNI", "78901234X");
-            reg.put("NOMBRE", "NADALES");
-            reg.put("CP", "44126");
-            faa.insertar(reg, 1);
+            reg.put("DNI", "99999999Z");
+            reg.put("NOMBRE", "FUERA_DE_RANGO");
+            reg.put("CP", "00000");
+
+            faa.insertar(reg, 10);
+
+            System.out.println("Se ha insertado un registro en la posición 10.");
+
+            // Mostramos el nuevo tamaño del fichero
+            System.out.println("Tamaño final del fichero: " + new File("fic_acceso_aleat.dat").length() + " bytes");
 
         } catch (IOException e) {
-            // Maneja errores de entrada/salida.
             System.err.println("Error de E/S: " + e.getMessage());
         } catch (Exception e) {
-            // Maneja cualquier otra excepción.
             e.printStackTrace();
         }
     }
+
 }
