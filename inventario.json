@@ -1,0 +1,19 @@
+{
+  "nombreTienda" : "Tienda Ejemplo",
+  "productos" : [ {
+    "id" : "1",
+    "nombre" : "Manzana",
+    "precio" : 0.5,
+    "cantidad" : 100
+  }, {
+    "id" : "2",
+    "nombre" : "Leche",
+    "precio" : 1.2,
+    "cantidad" : 50
+  }, {
+    "id" : "3",
+    "nombre" : "Pan",
+    "precio" : 0.8,
+    "cantidad" : 30
+  } ]
+}
