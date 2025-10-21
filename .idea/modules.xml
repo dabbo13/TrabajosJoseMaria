@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ProyectoClaseAADD.iml" filepath="$PROJECT_DIR$/ProyectoClaseAADD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XML_JSON/XML_JSON.iml" filepath="$PROJECT_DIR$/XML_JSON/XML_JSON.iml" />
     </modules>
   </component>
 </project>
